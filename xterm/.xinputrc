@@ -1,0 +1,4 @@
+# im-config(8) generated on Mon, 09 Oct 2017 17:52:43 +0800
+run_im fcitx
+# im-config signature: d2b478b3f6fdfbe59affb708c6f98784  -
+export QT_IM_MODULE=fcitx

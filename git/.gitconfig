@@ -1,0 +1,17 @@
+[gui]
+	fontdiff = -family \"Fira Code\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0s
+[user]
+	name = atauzki
+	email = ps031a@gmail.com
+[core]
+	editor = vim
+	autocrlf = input
+	safecrlf = true
+[diff]
+    tool = meld
+[merge]
+	tool = meld
+[alias]
+	last = log -1 --stat
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+

@@ -1,0 +1,51 @@
+!xrdb ~/.Xresources
+
+!xterm font and locale
+xterm.locale:true
+xterm.utf8: true
+xterm*utf8Title:true
+xterm*fontMenu*fontdefault*Label:Default
+
+xterm*faceName:Source Code Pro:antialias=true:pixelsize=14
+xterm*faceNameDoublesize:WenQuanYi Micro Hei:pixelsize=14:antialias=true
+
+xterm*xftAntialias:true
+
+! true, CJK text column width of 2
+! xterm*cjkWidth:true
+
+!color
+xterm*background:black
+xterm*foreground:white
+
+! xterm*color0: #000000
+! xterm*color1: #CC0000
+! xterm*color2: #4E9A06
+! xterm*color3: #C4A000
+! xterm*color4: #3465A4
+! xterm*color5: #75507B
+! xterm*color6: #06989A
+! xterm*color7: #D3D7CF
+!
+! xterm*color8: #555753
+! xterm*color9: #EF2929
+! xterm*color10: #8AE234
+! xterm*color11: #FCE94F
+! xterm*color12: #729FCF
+! xterm*color13: #AD7FA8
+! xterm*color14: #34E2E2
+! xterm*color15: #EEEEEC
+
+!fix alt key for keyboard shortcuts
+!xterm*altSendsEscape:true
+
+!Scrolling, Shift+PageUp/Shift+PageDown, or the scrollbar
+xterm*saveLines: 4096
+
+!main windows size
+xterm*VT100.geometry: 100x25
+
+!mouse selection to copy, Ctrl-V, also Shift+Insert
+xterm*VT100.Translations: #override \
+	<Btn1Up>: select-end(CLIPBOARD,PRIMARY,CUT_BUFFER0) \n\
+        Ctrl <KeyPress> V: insert-selection(CLIPBOARD,PRIMARY,CUT_BUFFER0)

@@ -1,0 +1,181 @@
+enabled = false
+
+[[plugs]]
+name = "vim-trailing-whitespace"
+url = "https://github.com/bronson/vim-trailing-whitespace.git"
+removed = false
+
+[[plugs]]
+name = "vim-autoformat"
+url = "https://github.com/chiel92/vim-autoformat.git"
+removed = false
+
+[[plugs]]
+name = "vim-easymotion"
+url = "https://github.com/easymotion/vim-easymotion.git"
+removed = false
+
+[[plugs]]
+name = "editorconfig-vim"
+url = "https://github.com/editorconfig/editorconfig-vim.git"
+removed = false
+
+[[plugs]]
+name = "tabular"
+url = "https://github.com/godlygeek/tabular.git"
+removed = false
+
+[[plugs]]
+name = "vim-snippets"
+url = "https://github.com/honza/vim-snippets.git"
+removed = false
+
+[[plugs]]
+name = "ultisnips"
+url = "https://github.com/sirver/ultisnips.git"
+removed = false
+
+[[plugs]]
+name = "auto-pairs"
+url = "https://github.com/jiangmiao/auto-pairs.git"
+removed = false
+
+[[plugs]]
+name = "vim-nerdtree-tabs"
+url = "https://github.com/jistr/vim-nerdtree-tabs.git"
+removed = false
+
+[[plugs]]
+name = "fzf"
+url = "https://github.com/junegunn/fzf.git"
+removed = false
+
+[[plugs]]
+name = "fzf.vim"
+url = "https://github.com/junegunn/fzf.vim.git"
+removed = false
+
+[[plugs]]
+name = "colorizer"
+url = "https://github.com/lilydjwg/colorizer.git"
+removed = false
+
+[[plugs]]
+name = "tagbar"
+url = "https://github.com/majutsushi/tagbar.git"
+removed = false
+
+[[plugs]]
+name = "emmet-vim"
+url = "https://github.com/mattn/emmet-vim.git"
+removed = false
+
+[[plugs]]
+name = "vim-signify"
+url = "https://github.com/mhinz/vim-signify.git"
+removed = false
+
+[[plugs]]
+name = "papercolor-theme"
+url = "https://github.com/NLKNguyen/papercolor-theme.git"
+removed = false
+
+[[plugs]]
+name = "javascript-libraries-syntax.vim"
+url = "https://github.com/othree/javascript-libraries-syntax.vim.git"
+removed = false
+
+[[plugs]]
+name = "xml.vim"
+url = "https://github.com/othree/xml.vim.git"
+removed = false
+
+[[plugs]]
+name = "vim-markdown"
+url = "https://github.com/plasticboy/vim-markdown.git"
+removed = false
+
+[[plugs]]
+name = "python-mode"
+url = "https://github.com/python-mode/python-mode.git"
+removed = false
+
+[[plugs]]
+name = "nerdtree"
+url = "https://github.com/scrooloose/nerdtree.git"
+removed = false
+
+[[plugs]]
+name = "vim-polyglot"
+url = "https://github.com/sheerun/vim-polyglot.git"
+removed = false
+
+[[plugs]]
+name = "neco-vim"
+url = "https://github.com/shougo/neco-vim.git"
+removed = false
+
+[[plugs]]
+name = "deoplete.nvim"
+url = "https://github.com/Shougo/deoplete.nvim.git"
+removed = false
+
+[[plugs]]
+name = "nvim-yarp"
+url = "https://github.com/roxma/nvim-yarp.git"
+removed = false
+
+[[plugs]]
+name = "vim-hug-neovim-rpc"
+url = "https://github.com/roxma/vim-hug-neovim-rpc.git"
+removed = false
+
+[[plugs]]
+name = "asyncrun.vim"
+url = "https://github.com/skywind3000/asyncrun.vim.git"
+removed = false
+
+[[plugs]]
+name = "tcomment_vim"
+url = "https://github.com/tomtom/tcomment_vim.git"
+removed = false
+
+[[plugs]]
+name = "vim-fugitive"
+url = "https://github.com/tpope/vim-fugitive.git"
+removed = false
+
+[[plugs]]
+name = "vim-repeat"
+url = "https://github.com/tpope/vim-repeat.git"
+removed = false
+
+[[plugs]]
+name = "vim-surround"
+url = "https://github.com/tpope/vim-surround.git"
+removed = false
+
+[[plugs]]
+name = "vim-airline-themes"
+url = "https://github.com/vim-airline/vim-airline-themes.git"
+removed = false
+
+[[plugs]]
+name = "vim-airline"
+url = "https://github.com/vim-airline/vim-airline.git"
+removed = false
+
+[[plugs]]
+name = "ale"
+url = "https://github.com/w0rp/ale.git"
+removed = false
+
+[[plugs]]
+name = "nerdtree-git-plugin"
+url = "https://github.com/xuyuanp/nerdtree-git-plugin.git"
+removed = false
+
+[[plugs]]
+name = "vimcdoc"
+url = "https://github.com/yianwillis/vimcdoc.git"
+removed = false
