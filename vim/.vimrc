@@ -27,7 +27,7 @@ call plug#begin("~/.vimplug")
   Plug 'valloric/Youcompleteme'
   Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline'
   Plug 'w0rp/ale'
-  Plug 'yianwillis/vimcdoc'
+  Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " -------------------------- 外观设置 --------------------------
@@ -153,6 +153,7 @@ let g:vim_markdown_fenced_languages = ['csharp=cs', 'js=javascript', 'bash=sh', 
 " ------------------------------- vim-airline ---------------------------------
 let g:airline_theme = 'light'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 " 缩写vim模式
 let g:airline_mode_map = {
 \  '__' : '-',
@@ -262,8 +263,8 @@ let g:tagbar_type_ruby = {
     \ }
 
 " -------------------------- NERDTree -----------------------------
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+" let g:NERDTreeDirArrowExpandable = '▸'
+" let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeChDirMode = 2
 " 不在NERDTree中显示下列文件（夹）
 let NERDTreeIgnore = [
