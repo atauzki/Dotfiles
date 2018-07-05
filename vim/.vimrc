@@ -1,7 +1,6 @@
 " 插件
 call plug#begin("~/.vimplug")
   Plug 'airblade/vim-gitgutter'
-  Plug 'bronson/vim-trailing-whitespace'
   Plug 'chiel92/vim-autoformat'
   Plug 'easymotion/vim-easymotion'
   Plug 'editorconfig/editorconfig-vim'
@@ -15,6 +14,7 @@ call plug#begin("~/.vimplug")
   Plug 'mattn/emmet-vim', {'for': ['html', 'css']}
   Plug 'mbbill/undotree'
   Plug 'nlknguyen/papercolor-theme'
+  Plug 'ntpeters/vim-better-whitespace'
   Plug 'othree/javascript-libraries-syntax.vim'
   Plug 'plasticboy/vim-markdown'
   Plug 'scrooloose/nerdtree'
@@ -144,7 +144,6 @@ nnoremap <silent><F2> :NERDTreeToggle<CR>
 nnoremap <silent><F3> :TagbarToggle<CR>
 nnoremap <C-F3>       :UndotreeToggle<CR>
 nnoremap <leader>ff :Autoformat<CR>
-let g:extra_whitespace_ignored_filetypes = ['vim-plug', 'help', 'nerdtree', 'undotree', 'tagbar']
 let g:user_emmet_expandabbr_key = '<c-e>'
 let g:used_javascript_libs = 'jquery,angularjs,vue,react'
 let g:vim_markdown_fenced_languages = ['csharp=cs', 'js=javascript', 'bash=sh', 'c++=cpp']
