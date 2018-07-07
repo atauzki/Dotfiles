@@ -7,7 +7,7 @@ call plug#begin("~/.vimplug")
   Plug 'godlygeek/tabular'
   Plug 'honza/vim-snippets' | Plug 'sirver/ultisnips'
   Plug 'jiangmiao/auto-pairs'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf', {'dir': '~/.fzf'}
   Plug 'junegunn/fzf.vim'
   Plug 'lilydjwg/colorizer', {'for': ['html', 'css', 'less', 'scss']}
   Plug 'majutsushi/tagbar'

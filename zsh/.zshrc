@@ -11,20 +11,22 @@ antigen bundle sudo
 antigen bundle colored-man-pages
 
 # Syntax highlighting bundle.
-antigen bundle wting/autojump
 antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle bhilburn/powerlevel9k
-antigen bindle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle b4b4r07/enhancd
+antigen bundle hlissner/zsh-autopair
+
+
 # Load the theme.
 POWERLEVEL9K_MODE=nerdfont-complete
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 antigen theme bhilburn/powerlevel9k
 
 # Tell Antigen that you're done.
 antigen apply
 
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)
 
 alias sudo='sudo '
 alias rm='rm -i'
@@ -33,4 +35,3 @@ alias fgrep='fgrep --color=auto'
 alias df='df -h'
 alias du='du -h'
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
