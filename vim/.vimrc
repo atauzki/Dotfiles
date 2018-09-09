@@ -37,15 +37,19 @@ filetype plugin indent on
 set termguicolors
 set background=dark
 color gruvbox
-set number rnu
-" 插入模式下用绝对行号, 普通模式下用相对
-autocmd InsertEnter * :set nornu
-autocmd InsertLeave * :set rnu
+set number relativenumber
+augroup myaugroup
+  " 插入模式下用绝对行号, 普通模式下用相对
+  autocmd InsertEnter * :set norelativenumber
+  autocmd InsertLeave * :set relativenumber
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  autocmd ColorScheme * AirlineRefresh
+augroup END
 function! NumberToggle()
   if(&relativenumber == 1)
-    set nornu
+    set norelativenumber
   else
-    set rnu
+    set relativenumber
   endif
 endfunc
 let g:better_whitespace_filetypes_blacklist = [
@@ -57,9 +61,6 @@ let g:better_whitespace_filetypes_blacklist = [
 set modeline
 set autoread
 " 上次编辑位置
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
 " 如遇Unicode值大于255的文本，不必等到空格再折行
 set formatoptions+=m
 " 合并两行中文时，不在中间加空格
@@ -67,7 +68,7 @@ set formatoptions+=B
 
 " Tab与缩进
 set smartindent
-set ts=4 sts=4 sw=4
+set tabstop=4 softtabstop=4 shiftwidth=4
 set expandtab
 set nowrap
 
@@ -87,11 +88,12 @@ set undoreload=10000
 
 " 字符编码
 set encoding=utf-8
-set fenc=utf-8
-set fencs=ucs-bom,utf-8,gb18030,latin1
-set tenc=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,gb18030,latin1
+set termencoding=utf-8
 set fileformat=unix
 set nobomb
+scriptencoding utf-8
 
 " 搜索选项
 set hlsearch
@@ -101,7 +103,7 @@ nmap <leader>db :bdelete<CR>
 
 
 " -------------------------- 键盘设置 --------------------------
-let mapleader=","
+let mapleader=','
 set whichwrap+=<,>,h,l
 nnoremap <silent><F7> :cope<CR>
 noremap j gj
@@ -127,17 +129,17 @@ nnoremap <silent><leader>c :Commits<CR>
 
 " 快速切换颜色主题
 command! -bang Colors
-  \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 30%,0'}, <bang>0)
+      \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 30%,0'}, <bang>0)
 
 " 在fzf中集成git grep， ag(the_silver_searcher)， rg(ripgrep)
 command! -bang -nargs=* GGrep
-  \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)
+      \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)
 
 command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \                 <bang>0)
+      \ call fzf#vim#ag(<q-args>,
+      \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+      \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \                 <bang>0)
 
 command! -bang -nargs=* Rg
       \ call fzf#vim#grep(
@@ -196,6 +198,8 @@ let g:ycm_complete_in_comments = 0 " 不在注释中启用补全
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 inoremap <leader><leader> <C-x><C-o>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_error_symbol = '✗'
+let g:ycm_warning_symbol = '⚠ '
 
 let g:ycm_semantic_triggers =  {
       \ 'python': ['from ', 'import ', '.']
@@ -212,10 +216,9 @@ let g:ycm_filetype_blacklist = {
 
 
 " ------------------------------- vim-airline ---------------------------------
-au ColorScheme * AirlineRefresh
 let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
-let g:airline_detect_spell = 0
+let g:airline_detect_spell = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -226,4 +229,3 @@ let g:airline_mode_map = {
       \  'S'  : 'S',    '' : 'S',    't'  : 'T'}
 
 " vim: ts=2 sts=2 sw=2 noai
-

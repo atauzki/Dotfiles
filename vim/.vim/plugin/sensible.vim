@@ -38,6 +38,7 @@ endif
 set laststatus=2
 set ruler
 set wildmenu
+set mouse=a
 
 if !&scrolloff
   set scrolloff=1
