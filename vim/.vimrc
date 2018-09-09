@@ -27,7 +27,7 @@ call plug#begin("~/.vimplug")
   Plug 'valloric/Youcompleteme'
   Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline'
   Plug 'w0rp/ale'
-  Plug 'ryanoasis/vim-devicons'
+  " Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " -------------------------- 外观设置 --------------------------
