@@ -66,7 +66,6 @@ set formatoptions+=m
 set formatoptions+=B
 
 " Tab与缩进
-set autoindent
 set smartindent
 set ts=4 sts=4 sw=4
 set expandtab
@@ -213,6 +212,7 @@ let g:ycm_filetype_blacklist = {
 
 
 " ------------------------------- vim-airline ---------------------------------
+au ColorScheme * AirlineRefresh
 let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline_detect_spell = 0
