@@ -1,76 +1,56 @@
 " 插件
-call plug#begin("~/.vimplug")
-  Plug 'airblade/vim-gitgutter'
-  Plug 'chiel92/vim-autoformat'
-  Plug 'easymotion/vim-easymotion'
-  Plug 'editorconfig/editorconfig-vim'
-  Plug 'godlygeek/tabular'
-  Plug 'honza/vim-snippets' | Plug 'sirver/ultisnips'
-  Plug 'jiangmiao/auto-pairs'
-  Plug 'junegunn/fzf', {'dir': '~/.fzf'}
-  Plug 'junegunn/fzf.vim'
-  Plug 'lilydjwg/colorizer', {'for': ['html', 'css', 'less', 'scss']}
-  Plug 'majutsushi/tagbar'
-  Plug 'mattn/emmet-vim', {'for': ['html', 'css']}
-  Plug 'mbbill/undotree'
-  Plug 'nlknguyen/papercolor-theme'
-  Plug 'ntpeters/vim-better-whitespace'
-  Plug 'othree/javascript-libraries-syntax.vim'
-  Plug 'plasticboy/vim-markdown'
-  Plug 'scrooloose/nerdtree'
-  Plug 'sheerun/vim-polyglot'
-  Plug 'skywind3000/asyncrun.vim'
-  Plug 'tomtom/tcomment_vim'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-surround'
-  Plug 'valloric/Youcompleteme'
-  Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline'
-  Plug 'w0rp/ale'
-  " Plug 'ryanoasis/vim-devicons'
+call plug#begin('~/.vimplug')
+Plug 'airblade/vim-gitgutter'
+Plug 'chiel92/vim-autoformat'
+Plug 'easymotion/vim-easymotion'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'godlygeek/tabular'
+Plug 'honza/vim-snippets' | Plug 'sirver/ultisnips'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf', {'dir': '~/.fzf'}
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-slash'
+Plug 'majutsushi/tagbar'
+Plug 'mattn/emmet-vim'
+Plug 'mbbill/undotree'
+Plug 'morhetz/gruvbox'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'rhysd/clever-f.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'valloric/Youcompleteme'
+Plug 'vim-airline/vim-airline'
+Plug 'w0rp/ale'
 call plug#end()
 
 " -------------------------- 外观设置 --------------------------
-set background=dark
-set backspace=2
-set cursorline
-set laststatus=2
-set mouse=a
-set mousehide
-set noshowmode
-set ruler
 set shortmess=atI
-set wildignore=*.o,*~,*.swp,*.bak,*.pyc,*.class,.svn,.git
-set wildmenu
+set noshowmode
+set wildignore=*.o,*~,*.pyc,*.class
+set cursorline
 filetype plugin indent on
-color PaperColor
-let g:PaperColor_Theme_Options = {
-  \   'language': {
-  \     'python': {
-  \       'highlight_builtins': 1
-  \     },
-  \     'cpp': {
-  \       'highlight_standard_library': 1
-  \     },
-  \     'c': {
-  \       'highlight_builtins': 1
-  \     }
-  \   }
-  \ }
-" set termguicolors
-
+set termguicolors
+set background=dark
+color gruvbox
 set number rnu
 " 插入模式下用绝对行号, 普通模式下用相对
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
+autocmd InsertEnter * :set nornu
+autocmd InsertLeave * :set rnu
 function! NumberToggle()
   if(&relativenumber == 1)
-    set norelativenumber
+    set nornu
   else
-    set relativenumber
+    set rnu
   endif
 endfunc
-nnoremap <C-n> :call NumberToggle()<cr>
+let g:better_whitespace_filetypes_blacklist = [
+      \ 'diff', 'gitcommit', 'unite', 'qf',
+      \ 'help', 'markdown', 'git']
 
 
 " -------------------------- 编辑器行为 --------------------------
@@ -87,7 +67,7 @@ set formatoptions+=B
 
 " Tab与缩进
 set autoindent
-set cindent
+set smartindent
 set ts=4 sts=4 sw=4
 set expandtab
 set nowrap
@@ -115,11 +95,10 @@ set fileformat=unix
 set nobomb
 
 " 搜索选项
-set hls
-set incsearch
+set hlsearch
 set ignorecase
 set smartcase
-noremap <silent><C-l> :<C-u>nohlsearch<CR><C-l>
+nmap <leader>db :bdelete<CR>
 
 
 " -------------------------- 键盘设置 --------------------------
@@ -130,49 +109,22 @@ noremap j gj
 noremap k gk
 nnoremap gj j
 nnoremap gk k
-" 设置折叠级别
-nnoremap z0 :set foldlevel=0<CR>
-nnoremap z1 :set foldlevel=1<CR>
-nnoremap z2 :set foldlevel=2<CR>
-nnoremap z3 :set foldlevel=3<CR>
-nnoremap z9 :set foldlevel=99<CR>
-
-
-
-" -----------------------------  misc ----------------------------
+map ; <Plug>(clever-f-repeat-forward)
+map \ <Plug>(clever-f-repeat-back)
+map <C-S-f> :Autoformat<CR>
+map <C-S-s> :StripWhitespace<CR>
+map <leader>bd :bdelete<CR>
+let g:clever_f_smart_case = 1
 nnoremap <silent><F2> :NERDTreeToggle<CR>
 nnoremap <silent><F3> :TagbarToggle<CR>
 nnoremap <C-F3>       :UndotreeToggle<CR>
-nnoremap <leader>ff :Autoformat<CR>
-let g:user_emmet_expandabbr_key = '<c-e>'
-let g:used_javascript_libs = 'jquery,angularjs,vue,react'
-let g:vim_markdown_fenced_languages = ['csharp=cs', 'js=javascript', 'bash=sh', 'c++=cpp']
 
-
-" ------------------------------- vim-airline ---------------------------------
-let g:airline_theme = 'light'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-" 缩写vim模式
-let g:airline_mode_map = {
-\  '__' : '-',
-\  'n'  : 'N',
-\  'i'  : 'I',
-\  'R'  : 'R',
-\  'c'  : 'C',
-\  'v'  : 'V',
-\  'V'  : 'V',
-\  '' : 'V',
-\  's'  : 'S',
-\  'S'  : 'S',
-\  '' : 'S',
-\  }
 
 " ---------------------------------- FZF-vim ----------------------------------
-nnoremap <C-p> :Files<CR>
-nnoremap <leader>m :History<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>c :Commits<CR>
+nnoremap <silent><C-p> :Files<CR>
+nnoremap <silent><leader>m :History<CR>
+nnoremap <silent><leader>b :Buffers<CR>
+nnoremap <silent><leader>c :Commits<CR>
 
 " 快速切换颜色主题
 command! -bang Colors
@@ -189,90 +141,30 @@ command! -bang -nargs=* Ag
   \                 <bang>0)
 
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   <bang>0)
 
 command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 
 " ------------------------------------ tagbar -----------------------------------
-let g:tagbar_iconchars = ['▶', '▼']
-let g:tagbar_type_css = {
-\ 'ctagstype' : 'css',
-    \ 'kinds'     : [
-        \ 'c:classes',
-        \ 's:selectors',
-        \ 'i:identities'
-    \ ]
-    \ }
-" 集成gotags
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
-let g:tagbar_type_rust = {
-  \ 'ctagstype' : 'rust',
-  \ 'kinds' : [
-      \'T:types,type definitions',
-      \'f:functions,function definitions',
-      \'g:enum,enumeration names',
-      \'s:structure names',
-      \'m:modules,module names',
-      \'c:consts,static constants',
-      \'t:traits',
-      \'i:impls,trait implementations',
-  \]
-  \}
-let g:tagbar_type_ruby = {
-    \ 'kinds' : [
-        \ 'm:modules',
-        \ 'c:classes',
-        \ 'd:describes',
-        \ 'C:contexts',
-        \ 'f:methods',
-        \ 'F:singleton methods'
-    \ ]
-    \ }
+let g:tagbar_iconchars = ['▸', '▾']
+
 
 " -------------------------- NERDTree -----------------------------
-" let g:NERDTreeDirArrowExpandable = '▸'
-" let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeChDirMode = 2
 " 不在NERDTree中显示下列文件（夹）
 let NERDTreeIgnore = [
-\  '\.class$',   '\.pyc$',         '\~$',        '\.git',   '\.svn',
-\  '\.hg',       'node_modules',   '\.vscode',   '\.o$',    '\.so$',
-\  '\.a$',       '\.dll$',         '\.lib$',     '\.iso$',  '\.rar$',
-\  '\.7z$',      '__pycache__',    '\.EXE$',     '\.pyc$',  '\.pyd$',
-\  '\.exe$',     '\.msi$',         '^NTUSER',    '^ntuser'
-\  ]
+      \  '\.class$',   '\.pyc$',         '\~$',        '\.git',   '\.svn',
+      \  '\.hg',       'node_modules',   '\.mdx',      '\.o$',    '\.bin$',
+      \  '\.iso$',     '^ntuser',        '\.mdd$',     '__pycache__',
+      \  '\.pyd$',     '\.msi$',         '^NTUSER'  ]
 
 
 
@@ -319,5 +211,19 @@ let g:ycm_filetype_blacklist = {
       \ 'gitcommit': 1
       \}
 
-" vim:fdm=indent:noai:ts=2:sw=2
+
+" ------------------------------- vim-airline ---------------------------------
+let g:airline_theme = 'gruvbox'
+let g:airline_powerline_fonts = 1
+let g:airline_detect_spell = 0
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_mode_map = {
+      \  '__' : '-',    'n'  : 'N',    'i'  : 'I',
+      \  'R'  : 'R',    'c'  : 'C',    'v'  : 'V',
+      \  'V'  : 'V',    '' : 'V',    's'  : 'S',
+      \  'S'  : 'S',    '' : 'S',    't'  : 'T'}
+
+" vim: ts=2 sts=2 sw=2 noai
 
