@@ -1,4 +1,4 @@
-" ²å¼ş
+" æ’ä»¶
 call plug#begin('$localappdata/nvim/Plug')
 Plug 'airblade/vim-gitgutter'
 Plug 'chiel92/vim-autoformat'
@@ -20,7 +20,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'yianwillis/vimcdoc'
 call plug#end()
 
-" -------------------------- Íâ¹ÛÉèÖÃ --------------------------
+" -------------------------- å¤–è§‚è®¾ç½® --------------------------
 set shortmess=atI
 set noshowmode
 set wildignore=*.o,*~,*.pyc,*.class
@@ -31,7 +31,7 @@ set background=dark
 color gruvbox
 set number relativenumber
 augroup myaugroup
-  " ²åÈëÄ£Ê½ÏÂÓÃ¾ø¶ÔĞĞºÅ, ÆÕÍ¨Ä£Ê½ÏÂÓÃÏà¶Ô
+  " æ’å…¥æ¨¡å¼ä¸‹ç”¨ç»å¯¹è¡Œå·, æ™®é€šæ¨¡å¼ä¸‹ç”¨ç›¸å¯¹
   autocmd InsertEnter * :set norelativenumber
   autocmd InsertLeave * :set relativenumber
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -49,28 +49,28 @@ let g:better_whitespace_filetypes_blacklist = [
       \ 'help', 'markdown', 'git']
 
 
-" -------------------------- ±à¼­Æ÷ĞĞÎª --------------------------
+" -------------------------- ç¼–è¾‘å™¨è¡Œä¸º --------------------------
 set modeline
 set autoread
-" ÉÏ´Î±à¼­Î»ÖÃ
-" ÈçÓöUnicodeÖµ´óÓÚ255µÄÎÄ±¾£¬²»±ØµÈµ½¿Õ¸ñÔÙÕÛĞĞ
+" ä¸Šæ¬¡ç¼–è¾‘ä½ç½®
+" å¦‚é‡Unicodeå€¼å¤§äº255çš„æ–‡æœ¬ï¼Œä¸å¿…ç­‰åˆ°ç©ºæ ¼å†æŠ˜è¡Œ
 set formatoptions+=m
-" ºÏ²¢Á½ĞĞÖĞÎÄÊ±£¬²»ÔÚÖĞ¼ä¼Ó¿Õ¸ñ
+" åˆå¹¶ä¸¤è¡Œä¸­æ–‡æ—¶ï¼Œä¸åœ¨ä¸­é—´åŠ ç©ºæ ¼
 set formatoptions+=B
 
-" TabÓëËõ½ø
+" Tabä¸ç¼©è¿›
 set smartindent
 set tabstop=4 softtabstop=4 shiftwidth=4
 set expandtab
 set nowrap
 
-" ´úÂëÕÛµş
+" ä»£ç æŠ˜å 
 set foldenable
 set foldcolumn=0
 set foldmethod=indent
 set foldlevelstart=99
 
-" ÁÙÊ±ÎÄ¼ş
+" ä¸´æ—¶æ–‡ä»¶
 set noswapfile
 set nobackup
 set undofile
@@ -78,7 +78,7 @@ set undodir=~/.vim/undo
 set undolevels=1000
 set undoreload=10000
 
-" ×Ö·û±àÂë
+" å­—ç¬¦ç¼–ç 
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,gb18030,latin1
@@ -87,14 +87,14 @@ set fileformat=unix
 set nobomb
 scriptencoding utf-8
 
-" ËÑË÷Ñ¡Ïî
+" æœç´¢é€‰é¡¹
 set hlsearch
 set ignorecase
 set smartcase
 nmap <leader>db :bdelete<CR>
 
 
-" -------------------------- ¼üÅÌÉèÖÃ --------------------------
+" -------------------------- é”®ç›˜è®¾ç½® --------------------------
 let mapleader=','
 set whichwrap+=<,>,h,l
 nnoremap <silent><F7> :cope<CR>
@@ -119,11 +119,11 @@ nnoremap <silent><leader>m :History<CR>
 nnoremap <silent><leader>b :Buffers<CR>
 nnoremap <silent><leader>c :Commits<CR>
 
-" ¿ìËÙÇĞ»»ÑÕÉ«Ö÷Ìâ
+" å¿«é€Ÿåˆ‡æ¢é¢œè‰²ä¸»é¢˜
 command! -bang Colors
       \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 30%,0'}, <bang>0)
 
-" ÔÚfzfÖĞ¼¯³Égit grep£¬ ag(the_silver_searcher)£¬ rg(ripgrep)
+" åœ¨fzfä¸­é›†æˆgit grepï¼Œ ag(the_silver_searcher)ï¼Œ rg(ripgrep)
 command! -bang -nargs=* GGrep
       \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)
 
@@ -147,7 +147,7 @@ command! -bang -nargs=? -complete=dir Files
 let g:NERDTreeDirArrowExpandable = '?'
 let g:NERDTreeDirArrowCollapsible = '?'
 let g:NERDTreeChDirMode = 2
-" ²»ÔÚNERDTreeÖĞÏÔÊ¾ÏÂÁĞÎÄ¼ş£¨¼Ğ£©
+" ä¸åœ¨NERDTreeä¸­æ˜¾ç¤ºä¸‹åˆ—æ–‡ä»¶ï¼ˆå¤¹ï¼‰
 let NERDTreeIgnore = [
       \  '\.class$',   '\.pyc$',         '\~$',        '\.git',   '\.svn',
       \  '\.hg',       'node_modules',   '\.mdx',      '\.o$',    '\.bin$',
