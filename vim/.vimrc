@@ -6,7 +6,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets' | Plug 'sirver/ultisnips'
-Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', {'dir': '~/.fzf'}
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-slash'
@@ -23,9 +22,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'valloric/Youcompleteme'
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
+Plug 'yianwillis/vimcdoc'
 call plug#end()
 
 " -------------------------- 外观设置 --------------------------
@@ -71,6 +70,7 @@ set smartindent
 set tabstop=4 softtabstop=4 shiftwidth=4
 set expandtab
 set nowrap
+set mouse=a
 
 " 代码折叠
 set foldenable
@@ -223,9 +223,10 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_mode_map = {
-      \  '__' : '-',    'n'  : 'N',    'i'  : 'I',
-      \  'R'  : 'R',    'c'  : 'C',    'v'  : 'V',
-      \  'V'  : 'V',    '' : 'V',    's'  : 'S',
-      \  'S'  : 'S',    '' : 'S',    't'  : 'T'}
-
+  \ '__' : '-',    'c'  : 'C',    'i'  : 'I',    'ic' : 'I',
+  \ 'ix' : 'I',    'n'  : 'N',    'ni' : 'N',    'no' : 'N',
+  \ 'R'  : 'R',    'Rv' : 'R',    's'  : 'S',    'S'  : 'S',
+  \ '' : 'S',    't'  : 'T',    'v'  : 'V',    'V'  : 'V',
+  \ '' : 'V' }
 " vim: ts=2 sts=2 sw=2 noai
+

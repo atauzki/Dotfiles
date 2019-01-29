@@ -63,6 +63,7 @@ set smartindent
 set tabstop=4 softtabstop=4 shiftwidth=4
 set expandtab
 set nowrap
+set mouse=a
 
 " 代码折叠
 set foldenable
@@ -74,7 +75,7 @@ set foldlevelstart=99
 set noswapfile
 set nobackup
 set undofile
-set undodir=~/.vim/undo
+set undodir=$localappdata/nvim/undo
 set undolevels=1000
 set undoreload=10000
 
@@ -91,12 +92,12 @@ scriptencoding utf-8
 set hlsearch
 set ignorecase
 set smartcase
-nmap <leader>db :bdelete<CR>
 
 
 " -------------------------- 键盘设置 --------------------------
 let mapleader=','
 set whichwrap+=<,>,h,l
+nmap <leader>db :bdelete<CR>
 nnoremap <silent><F7> :cope<CR>
 noremap j gj
 noremap k gk
@@ -144,8 +145,8 @@ command! -bang -nargs=? -complete=dir Files
       \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " -------------------------- NERDTree -----------------------------
-let g:NERDTreeDirArrowExpandable = '?'
-let g:NERDTreeDirArrowCollapsible = '?'
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeChDirMode = 2
 " 不在NERDTree中显示下列文件（夹）
 let NERDTreeIgnore = [
@@ -162,9 +163,9 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_mode_map = {
-      \  '__' : '-',    'n'  : 'N',    'i'  : 'I',
-      \  'R'  : 'R',    'c'  : 'C',    'v'  : 'V',
-      \  'V'  : 'V',    '' : 'V',    's'  : 'S',
-      \  'S'  : 'S',    '' : 'S',    't'  : 'T'}
-
+  \ '__' : '-',    'c'  : 'C',    'i'  : 'I',    'ic' : 'I',
+  \ 'ix' : 'I',    'n'  : 'N',    'ni' : 'N',    'no' : 'N',
+  \ 'R'  : 'R',    'Rv' : 'R',    's'  : 'S',    'S'  : 'S',
+  \ '' : 'S',    't'  : 'T',    'v'  : 'V',    'V'  : 'V',
+  \ '' : 'V' }
 " vim: ts=2 sts=2 sw=2 noai
