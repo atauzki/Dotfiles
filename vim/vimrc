@@ -6,13 +6,14 @@ Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets' | Plug 'sirver/ultisnips'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', {'dir': '~/.fzf'}
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-slash'
+Plug 'lifepillar/vim-gruvbox8'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
 Plug 'mbbill/undotree'
-Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'rhysd/clever-f.vim'
 Plug 'scrooloose/nerdtree'
@@ -35,7 +36,7 @@ set cursorline
 filetype plugin indent on
 set termguicolors
 set background=dark
-color gruvbox
+color gruvbox8
 set number relativenumber
 augroup myaugroup
   " 插入模式下用绝对行号, 普通模式下用相对

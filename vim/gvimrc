@@ -1,0 +1,14 @@
+" set go-=m
+set go-=T
+set go-=t
+set go-=e
+set go-=l
+set go-=L
+set go-=r
+set go-=R
+set gfn=Fira\ Code\ 10
+set columns=100 lines=25
+winpos 235 120
+"解决consle输出乱码
+language messages zh_CN.utf-8
+set linespace=-2

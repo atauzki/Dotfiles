@@ -1,14 +1,12 @@
 " 插件
-call plug#begin('$localappdata/nvim/Plug')
+call plug#begin('$VIM/Plug')
 Plug 'airblade/vim-gitgutter'
 Plug 'chiel92/vim-autoformat'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-slash'
-Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-gruvbox8'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'rhysd/clever-f.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
@@ -17,6 +15,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
+Plug 'yggdroot/indentline'
 Plug 'yianwillis/vimcdoc'
 call plug#end()
 
@@ -28,7 +27,8 @@ set cursorline
 filetype plugin indent on
 set termguicolors
 set background=dark
-color gruvbox
+let g:gruvbox_filetype_hi_groups = 1
+color gruvbox8
 set number relativenumber
 augroup myaugroup
   " 插入模式下用绝对行号, 普通模式下用相对
@@ -45,8 +45,8 @@ function! NumberToggle()
   endif
 endfunc
 let g:better_whitespace_filetypes_blacklist = [
-      \ 'diff', 'gitcommit', 'unite', 'qf',
-      \ 'help', 'markdown', 'git']
+  \ 'diff', 'gitcommit', 'unite', 'qf',
+  \ 'help', 'markdown', 'git']
 
 
 " -------------------------- 编辑器行为 --------------------------
@@ -75,7 +75,7 @@ set foldlevelstart=99
 set noswapfile
 set nobackup
 set undofile
-set undodir=$localappdata/nvim/undo
+set undodir=$VIM/vimfiles/undo
 set undolevels=1000
 set undoreload=10000
 
@@ -97,52 +97,49 @@ set smartcase
 " -------------------------- 键盘设置 --------------------------
 let mapleader=','
 set whichwrap+=<,>,h,l
-nmap <leader>db :bdelete<CR>
-nnoremap <silent><F7> :cope<CR>
+nnoremap <leader>db           :bdelete<CR>
+nnoremap <silent><F7>         :cope<CR>
 noremap j gj
 noremap k gk
 nnoremap gj j
 nnoremap gk k
-map ; <Plug>(clever-f-repeat-forward)
-map \ <Plug>(clever-f-repeat-back)
-map <C-S-f> :Autoformat<CR>
-map <C-S-s> :StripWhitespace<CR>
-map <leader>bd :bdelete<CR>
-let g:clever_f_smart_case = 1
-nnoremap <silent><F2> :NERDTreeToggle<CR>
-nnoremap <silent><F3> :TagbarToggle<CR>
-nnoremap <C-F3>       :UndotreeToggle<CR>
+nnoremap <leader>bd           :bdelete<CR>
+nnoremap <silent><F2>         :NERDTreeToggle<CR>
+nnoremap <silent><C-s>        :StripWhitespace<CR>
+nnoremap <silent><leader>ff   :Autoformat<CR>
 
 
 " ---------------------------------- FZF-vim ----------------------------------
-nnoremap <silent><C-p> :Files<CR>
-nnoremap <silent><leader>m :History<CR>
-nnoremap <silent><leader>b :Buffers<CR>
-nnoremap <silent><leader>c :Commits<CR>
+nnoremap <silent><C-p>        :Files<CR>
+nnoremap <silent><leader>m    :History<CR>
+nnoremap <silent><leader>b    :Buffers<CR>
+nnoremap <silent><leader>c    :Commits<CR>
 
 " 快速切换颜色主题
 command! -bang Colors
-      \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 30%,0'}, <bang>0)
+  \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 30%,0'}, <bang>0)
 
 " 在fzf中集成git grep， ag(the_silver_searcher)， rg(ripgrep)
 command! -bang -nargs=* GGrep
-      \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)
+  \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)
 
 command! -bang -nargs=* Ag
-      \ call fzf#vim#ag(<q-args>,
-      \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-      \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-      \                 <bang>0)
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
 
 command! -bang -nargs=* Rg
-      \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-      \   <bang>0 ? fzf#vim#with_preview('up:60%')
-      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-      \   <bang>0)
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
-command! -bang -nargs=? -complete=dir Files
-      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" command! -bang -nargs=? -complete=dir Files
+"       \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+let g:indentLine_char = '┆'
 
 " -------------------------- NERDTree -----------------------------
 let g:NERDTreeDirArrowExpandable = '▸'
@@ -150,10 +147,10 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeChDirMode = 2
 " 不在NERDTree中显示下列文件（夹）
 let NERDTreeIgnore = [
-      \  '\.class$',   '\.pyc$',         '\~$',        '\.git',   '\.svn',
-      \  '\.hg',       'node_modules',   '\.mdx',      '\.o$',    '\.bin$',
-      \  '\.iso$',     '^ntuser',        '\.mdd$',     '__pycache__',
-      \  '\.pyd$',     '\.msi$',         '^NTUSER'  ]
+  \ '\.class$',   '\.pyc$',         '\~$',        '\.git',   '\.svn',
+  \ '\.hg',       'node_modules',   '\.mdx',      '\.o$',    '\.bin$',
+  \ '\.iso$',     '^ntuser',        '\.mdd$',     '__pycache__',
+  \ '\.pyd$',     '\.msi$',         '^NTUSER'  ]
 
 " ------------------------------- vim-airline ---------------------------------
 let g:airline_theme = 'gruvbox'
@@ -168,4 +165,5 @@ let g:airline_mode_map = {
   \ 'R'  : 'R',    'Rv' : 'R',    's'  : 'S',    'S'  : 'S',
   \ '' : 'S',    't'  : 'T',    'v'  : 'V',    'V'  : 'V',
   \ '' : 'V' }
+
 " vim: ts=2 sts=2 sw=2 noai
